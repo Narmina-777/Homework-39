@@ -52,31 +52,31 @@ createNoteButton.addEventListener("click", () => {
   const upButton = document.createElement("button");
   upButton.textContent = "🔼";
   upButton.addEventListener("click", (event) => {
-    const li = event.target.parentEl;
+    const li = event.target.parentElement;
     const prev = li.previousElementSibling;
     if (prev) {
-      li.parentEl.insertBefore(li, prev);
+      li.parentElement.insertBefore(li, prev);
     }
   });
 
   const downButton = document.createElement("button");
   downButton.textContent = "🔽";
   downButton.addEventListener("click", (event) => {
-    const li = event.target.parentEl;
+    const li = event.target.parentElement;
     const next = li.nextElementSibling;
     if (next) {
-      li.parentEl.insertBefore(next, li);
+      li.parentElement.insertBefore(next, li);
     }
   });
 
   const colorButton = document.createElement("button");
   colorButton.textContent = "🎨";
-  colorButton.addEventListener("click", () => {
+  colorButton.addEventListener("click", (event) => {
     const li = event.target.parentElement;
-    let index = parseInt(li.getAttribute("data-color-index"));
+    let index = +li.dataset.colorIndex || 0;
     index = (index + 1) % colors.length;
     li.style.backgroundColor = colors[index];
-    li.setAttribute("data-color-index", index);
+    li.dataset.colorIndex = index;
   });
 
   const deleteButton = document.createElement("button");
